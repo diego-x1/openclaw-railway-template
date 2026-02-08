@@ -8,7 +8,20 @@ RUN apt-get update \
     gosu \
     procps \
     python3 \
+    python3-dev \
     build-essential \
+    # Browser & rendering
+    chromium \
+    # Audio/Video processing
+    ffmpeg \
+    # Search & utilities
+    ripgrep \
+    jq \
+    openssh-client \
+    rsync \
+    zip \
+    unzip \
+    htop \
   && rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g openclaw@latest
