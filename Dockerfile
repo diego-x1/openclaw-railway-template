@@ -4,25 +4,47 @@ RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
+    wget \
     git \
     gosu \
     procps \
+    build-essential \
+    # Python
     python3 \
     python3-dev \
-    build-essential \
+    python3-pip \
+    python3-venv \
     # Browser & rendering
     chromium \
     # Audio/Video processing
     ffmpeg \
-    # Search & utilities
+    # OCR
+    tesseract-ocr \
+    tesseract-ocr-pol \
+    # Document processing
+    imagemagick \
+    poppler-utils \
+    pandoc \
+    # Search & navigation
     ripgrep \
+    fd-find \
+    # Data & DB
     jq \
+    sqlite3 \
+    # Network & SSH
     openssh-client \
     rsync \
+    # Misc utilities
     zip \
     unzip \
     htop \
+    tree \
   && rm -rf /var/lib/apt/lists/*
+
+# Python packages (transcription, media tools)
+RUN pip3 install --no-cache-dir --break-system-packages \
+    faster-whisper \
+    yt-dlp
 
 RUN npm install -g openclaw@latest
 
